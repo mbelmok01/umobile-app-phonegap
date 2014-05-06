@@ -97,6 +97,14 @@ var umobile = {
 	utility: {},
 
 	/**
+	Namespace for umobile push.
+
+	@submodule push
+	@namespace push
+	**/
+	push: {},
+
+	/**
 	Method parses the data received by the session.established event.
 	Iterates over layout JSON and adds modules (i.e. portlets) to
 	the modues array based upon the number of portlets described

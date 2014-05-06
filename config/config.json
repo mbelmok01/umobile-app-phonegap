@@ -9,5 +9,13 @@
 		"prefix": "/css",
 		"debug": true
 	},
-	"plugins": ["org.jboss.aerogear.cordova.push"]
+	"plugins": ["../plugins/aerogear-pushplugin-cordova-0.0.3"]
+
 }
+
+
+
+
+
+
+
