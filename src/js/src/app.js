@@ -255,6 +255,7 @@ var umobile = {
 		'use strict';
 		umobile.app.stateModel = new umobile.model.State();
 		umobile.app.credModel = new umobile.model.Credential();
+		umobile.app.notifModel = new umobile.model.NotificationState();
 		umobile.app.moduleCollection = new umobile.collection.ModuleCollection();
 	},
 
@@ -323,6 +324,11 @@ var umobile = {
 		umobile.initModels();
 		umobile.initRouter();
 		umobile.updateAppState();
+		umobile.push.init();
+
+		// var val = umobile.app.notifModel.get('status');
+		// umobile.app.notifModel.set({status: "tata"});
+		// umobile.app.notifModel.save({status: "tata"});
 	},
 
 	/**

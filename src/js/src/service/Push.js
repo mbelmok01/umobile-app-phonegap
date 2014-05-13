@@ -31,17 +31,33 @@
 
 		push.register( successHandler, errorHandler, {"ecb": "onNotification", pushConfig: pushConfiguration});
 
-		debug.info("apres push register");
-
 	};
 
-	var successHandler = function(data) {
-		debug.info('Success : ' + data);
+    umobile.push.unregister = function() {
+        push.unregister(successHandlerUnregister, errorHandlerUnregister);
+    };
+    
+    var successHandler = function(data) {
+        alert("Pushs notifications are now enabled");
+        debug.info('Success : ' + data);
 	};
 
 	var errorHandler = function(err) {
-		debug.info('error : ' + err);
+        alert("Pushs notifications cannot be enabled cause of error");
+        debug.info('error : ' + err);
 	};
+
+    var successHandlerUnregister = function(data) {
+        alert("Pushs notifications are now desabled");
+        debug.info('Success : ' + data);
+    };
+
+    var errorHandlerUnregister = function(err) {
+        alert("Pushs notifications cannot be desabled cause of error");
+        debug.info('error : ' + err);
+    };
+
+
 
 	var onNotification = function(e) {
 		if (e.foreground) {

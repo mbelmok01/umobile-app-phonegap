@@ -137,6 +137,7 @@ module.exports = function (grunt) {
 					'www/js/lib/gibberish/gibberishAES.min.js': ['src/js/lib/gibberish/gibberishAES.js'],
 					'www/js/lib/underscore/underscore.min.js': ['src/js/lib/underscore/underscore.js'],
 					'www/js/lib/backbone/backbone.min.js': ['src/js/lib/backbone/backbone.js'],
+					'www/js/lib/backbone/backbone-localStorage.js': ['src/js/lib/backbone/backbone-localStorage.js'],
 					'www/js/lib/backbone/backbone-super.min.js': ['src/js/lib/backbone/backbone-super.js'],
 					'www/js/lib/backbone/backbone-validation.min.js': ['src/js/lib/backbone/backbone-validation.js'],
 					'www/js/lib/handlebars/handlebars.min.js': ['src/js/lib/handlebars/handlebars.js'],
@@ -159,6 +160,7 @@ module.exports = function (grunt) {
 						'src/js/src/model/Module.js',
 						'src/js/src/model/Credential.js',
 						'src/js/src/model/Notifier.js',
+						'src/js/src/model/NotificationState.js',
 
 						'src/js/src/resource/Background.js',
 
