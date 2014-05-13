@@ -19,7 +19,7 @@
 		**/
 		defaults: {
 			id: 'notifications',
-			status: false
+			status: null
 		},
 
 		/**

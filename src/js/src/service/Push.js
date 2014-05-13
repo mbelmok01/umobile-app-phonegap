@@ -29,15 +29,21 @@
 
 	umobile.push.init = function() {
 
-		push.register( successHandler, errorHandler, {"ecb": "onNotification", pushConfig: pushConfiguration});
-
+        if(umobile.app.notifModel.get("status") == null)
+        {
+            push.register( successHandler, errorHandler, {"ecb": "onNotification", pushConfig: pushConfiguration});
+        }
 	};
 
+    umobile.push.register = function() {
+        push.register( successHandler, errorHandler, {"ecb": "onNotification", pushConfig: pushConfiguration});
+    }
     umobile.push.unregister = function() {
         push.unregister(successHandlerUnregister, errorHandlerUnregister);
     };
     
     var successHandler = function(data) {
+        umobile.app.notifModel.save({status: "enabled"});
         alert("Pushs notifications are now enabled");
         debug.info('Success : ' + data);
 	};
@@ -48,6 +54,7 @@
 	};
 
     var successHandlerUnregister = function(data) {
+        umobile.app.notifModel.save({status: "desabled"});
         alert("Pushs notifications are now desabled");
         debug.info('Success : ' + data);
     };
@@ -56,8 +63,6 @@
         alert("Pushs notifications cannot be desabled cause of error");
         debug.info('error : ' + err);
     };
-
-
 
 	var onNotification = function(e) {
 		if (e.foreground) {
