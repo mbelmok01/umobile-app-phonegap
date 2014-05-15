@@ -160,11 +160,14 @@ module.exports = function (grunt) {
 						'src/js/src/model/Module.js',
 						'src/js/src/model/Credential.js',
 						'src/js/src/model/Notifier.js',
-						'src/js/src/model/NotificationState.js',
+						// 'src/js/src/model/Notification.js',
+						// 'src/js/src/model/NotificationState.js',
+						
 
 						'src/js/src/resource/Background.js',
 
 						'src/js/src/collection/ModuleCollection.js',
+						// 'src/js/src/collection/NotificationCollection.js',
 
 						
 						'src/js/src/view/ViewManager.js',

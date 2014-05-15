@@ -26,9 +26,26 @@
 		<script type="text/javascript" src="js/lib/handlebars/handlebars.min.js"></script>
 		<script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/lib/debug/debug.min.js"></script>
-		<script src="http://10.13.3.240:8081/target/target-script-min.js#umobile"></script>
+		<script src="http://172.20.10.6:8081/target/target-script-min.js#umobile"></script>
 
 	</head>
+	<style>
+		.notificationStyle {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+		.paraStyle {
+			width: 80%;
+			height: auto;
+		}
+		.spanStyle {
+			width: 20%;
+			height: auto;
+			float : right;
+			display: inline;
+		}
+		</style>
 
 	<body>
 		<div id="page" class="um-page"></div>
@@ -48,8 +65,12 @@
 
 		</script>
 		-->
-		<button class="btn btn-inverse um-btn-inverse" onclick="umobile.push.init()">Set notifications On</button>
-		<button class="btn btn-inverse um-btn-inverse" onclick="umobile.push.unregister()">Set notifications Off</button>
+
+		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.register()">Set notifications On</button>
+		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.unregister()">Set notifications Off</button>
+		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.removeHistory()">Remove notifications history</button>
+
+		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.displayHistory()">Display history</button>
 
 		<script type="text/javascript">
 			$(function () {

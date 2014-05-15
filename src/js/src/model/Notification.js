@@ -3,14 +3,18 @@
 	'use strict';
 
 	/**
-	The State model houses the state of a notifications push status.
+	The Module model houses information relating to each
+	module or portlet.
 
-	@class State
+	@class Module
 	@submodule model
 	@namespace model
 	@constructor
 	**/
-	umobile.model.NotificationState = Backbone.Model.extend({
+
+	
+
+	umobile.model.Notification = Backbone.Model.extend({
 		/**
 		Property houses default model attributes.
 
@@ -18,8 +22,11 @@
 		@type Object
 		**/
 		defaults: {
-			id: 'notificationState',
-			status: null
+			message: null,
+			data : null,
+			badge: null,
+			date : null,
+			time : null
 		},
 
 		/**
@@ -28,7 +35,7 @@
 
 		@method sync
 		**/
-		sync: umobile.storage.sync(umobile.storage[config.storageFn], 'notificationState')
+		sync: umobile.storage.sync(umobile.storage[config.storageFn], 'notification')
 	});
 
 })(jQuery, _, umobile, config);

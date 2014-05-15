@@ -255,8 +255,10 @@ var umobile = {
 		'use strict';
 		umobile.app.stateModel = new umobile.model.State();
 		umobile.app.credModel = new umobile.model.Credential();
-		umobile.app.notifModel = new umobile.model.NotificationState();
+		// umobile.app.notificationModel = new umobile.model.Notification();
+		// umobile.app.notificationStateModel = new umobile.model.NotificationState();
 		umobile.app.moduleCollection = new umobile.collection.ModuleCollection();
+		// umobile.app.notificationCollection = new umobile.collection.NotificationCollection();
 	},
 
 	/**

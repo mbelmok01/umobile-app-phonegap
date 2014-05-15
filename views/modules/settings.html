@@ -1,9 +1,28 @@
-<div id="formContainer" class="um-form-container clearfix">
-	<legend>Settings</legend>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Settings</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+
+		<!--CSS Dependencies-->
+		<link type="text/css" rel="stylesheet" href="../css/module.css">
+	<head>
+	<body class="um-module">
+		<!--
+		| =====================
+		| Settings View
+		| =====================
+		-->
+		<div id="calendar">
+			<h1>Settings</h1>
+		</div>
+
 		<form action="">
 			<!-- Notifications -->
-			<button class="bouton-g-on" onclick="umobile.push.register()">Set notifications On</button>
-			<button class="bouton-g-off" onclick="umobile.push.unregister()">Set notifications Off</button>
+			<button class="btn btn-inverse um-btn-inverse" style="display : block;" onclick="umobile.push.register()">Set notifications On</button>
+			<button class="btn btn-inverse um-btn-inverse" style="display : block;" onclick="umobile.push.unregister()">Set notifications Off</button>
 		</form>
-			
-</div>
+	</body>
+</html>
