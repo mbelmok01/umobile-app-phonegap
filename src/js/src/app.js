@@ -10,6 +10,7 @@ submodules.
 @namespace umobile
 @main umobile
 **/
+
 var umobile = {
 	/**
 	Namespace for running instances that are needed across the
@@ -326,11 +327,7 @@ var umobile = {
 		umobile.initModels();
 		umobile.initRouter();
 		umobile.updateAppState();
-		umobile.push.init();
-
-		// var val = umobile.app.notifModel.get('status');
-		// umobile.app.notifModel.set({status: "tata"});
-		// umobile.app.notifModel.save({status: "tata"});
+		// umobile.push.init();
 	},
 
 	/**
