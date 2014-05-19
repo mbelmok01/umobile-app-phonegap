@@ -93,10 +93,23 @@
         localStorage.removeItem("NotificationHistory");
         currentHistory = null;
         umobile.push.displayHistory();
+        document.getElementById("#divPrincipale").remove();
+    };
+
+    umobile.push.refreshHistory = function () {
+
+        if(document.getElementById("divPrincipale") != null) {
+           $("#divPrincipale").remove();
+        }
+
+        if(JSON.parse(localStorage.getItem("NotificationHistory")).length != 0) {
+            umobile.push.displayHistory()
+        }
     };
 
     umobile.push.displayHistory = function () {
-
+        umobile.push.register();
+        
         if($(".notificationStyle").size() === 0) {
 
             var currentHistory = JSON.parse(localStorage.getItem("NotificationHistory")) || [];
@@ -104,6 +117,10 @@
             if (! (currentHistory instanceof Array) ) {
                     currentHistory = [];
             }
+
+            var divPrincipale = document.createElement("div");
+            divPrincipale.id = "divPrincipale"; 
+            document.getElementsByTagName("body")[0].appendChild(divPrincipale);
 
             for(var i =0; i < currentHistory.length; i++)
             {
@@ -120,8 +137,8 @@
                 span.innerHTML = notification.time;
                 iDiv.appendChild(span);
                 iDiv.appendChild(ipara);
-                document.getElementsByTagName("body")[0].appendChild(iDiv);
-                document.getElementsByTagName("body")[0].appendChild(seprateur);
+                document.getElementById("divPrincipale").appendChild(iDiv);
+                document.getElementById("divPrincipale").appendChild(seprateur);
             }
         }
     };
