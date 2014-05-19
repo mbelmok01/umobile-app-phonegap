@@ -2,10 +2,10 @@
 (function ($, _, umobile, config) {
 
     var PushConfig = {
-        senderID: "140379696132",
+        senderID: "903205907343",
         pushServerURL: "http://172.20.10.6:8080/ag-push/",
-        variantID: "e457f731-1961-4a18-87c6-6a5741283633",
-        variantSecret: "3f13ea9a-c964-4c52-9c73-640e78f62517"
+        variantID: "3e4f8fe8-085c-46a8-829b-4d2cca59aca8",
+        variantSecret: "e758d04b-1636-42bb-ac5f-86e796c3cb75"
     }
 
     umobile.push.register = function() {
@@ -23,7 +23,13 @@
     };
 
     umobile.push.unregister = function() {
-        push.unregister(successHandlerUnregister, errorHandlerUnregister);
+        push.unregister(function (result) {
+                console.log("success: " + result);
+            },
+            
+            function (error) {
+                console.log("error: " + error);
+            });
     };
 
     umobile.push.onNotification = function(e) {
@@ -35,8 +41,8 @@
 
             console.log('--INLINE NOTIFICATION--');
             // if the notification contains a soundname, play it.
-            var my_media = new Media("/android_asset/www/" + e.sound);
-            my_media.play();
+            // var my_media = new Media("/android_asset/www/" + e.sound);
+            // my_media.play();
         }
         else {   // otherwise we were launched because the user touched a notification in the notification tray.
             if (e.coldstart) {
