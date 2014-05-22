@@ -2,7 +2,9 @@
 /www/
 /node_modules/
 /src/index.html
-/src/modules/
+/src/modules/*
 /src/css/
 /src/docs/
 phonegap/
+plugins/
+*.txt

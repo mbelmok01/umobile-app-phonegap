@@ -1,48 +1,29 @@
 /*global window:true, _:true, document:true, jQuery:true, umobile:true, config:true, console:true */
 (function ($, _, umobile, config) {
 
-    var PushConfig = {
-        senderID: "903205907343",
-        pushServerURL: "http://172.20.10.6:8080/ag-push/",
-        variantID: "3e4f8fe8-085c-46a8-829b-4d2cca59aca8",
-        variantSecret: "e758d04b-1636-42bb-ac5f-86e796c3cb75"
-    }
-
     umobile.push.register = function() {
-        push.register(
-            function (result) {
-                console.log("success: " + result);
-            },
-            
-            function (error) {
-                console.log("error: " + error);
-            },
-            
-            {"ecb": "umobile.push.onNotification", pushConfig: PushConfig}
-        );
-    };
 
-    umobile.push.unregister = function() {
-        push.unregister(function (result) {
-                console.log("success: " + result);
-            },
-            
-            function (error) {
-                console.log("error: " + error);
-            });
+        var pushConfig = {
+                senderID: "560741818531",
+                pushServerURL: "http://172.20.10.6:8080/ag-push/",
+                variantID: "6423790e-74a9-426e-b5f3-649a9745c026",
+                variantSecret: "c1842770-ebcd-45bf-b7c5-b83a00de1bc8"
+                }
+                        
+            push.register(umobile.push.successHandler, umobile.push.errorHandler, {"ecb": "umobile.push.onNotification", pushConfig: pushConfig});
     };
 
     umobile.push.onNotification = function(e) {
-    
-        
+
+        alert("Passage dans la fonction onNotification");
         // if this flag is set, this notification happened while we were in the foreground.
         // you might want to play a sound to get the user's attention, throw up a dialog, etc.
         if (e.foreground) {
 
             console.log('--INLINE NOTIFICATION--');
             // if the notification contains a soundname, play it.
-            // var my_media = new Media("/android_asset/www/" + e.sound);
-            // my_media.play();
+            var my_media = new Media("/android_asset/www/" + e.sound);
+            my_media.play();
         }
         else {   // otherwise we were launched because the user touched a notification in the notification tray.
             if (e.coldstart) {
@@ -58,89 +39,61 @@
           push.setApplicationIconBadgeNumber(successHandler, e.badge);
         }
         
-        // localStorage.setItem("myMessage", e.alert);
-
-        var ladate = new Date();
-        var currentDate = ladate.getDate()+"/"+(ladate.getMonth()+1)+"/"+ladate.getFullYear();
-        var currentTime = ladate.getHours() + ":" + ladate.getMinutes();
-        
-        umobile.push.addHistory(e.alert, e.badge, currentDate, currentTime);
-
+        localStorage.setItem("myMessage", e.alert);
         
         console.log('MESSAGE -> MSG: ' + e.alert);
     };
 
-    umobile.push.addHistory = function (message, badge, date, time) {
+    umobile.push.successHandler = function (success) {
+        console.log('error: ' + success);
+        debug.info('success: ' + success);
+        alert('error: ' + success);
+    };
 
-        var currentHistory = JSON.parse(localStorage.getItem("NotificationHistory")) || [];
+    umobile.push.errorHandler = function (error) {
+        console.log('error: ' + error);
+        debug.info('success: ' + error);
+        alert('error: ' + error);
+    };
+
+
+    umobile.push.unregister = function() {
+        
+        push.unregister(function (result) {
+            debug.info('success: ' +date +' ' +  result);
+            console.log("success: " + date +' ' + result);
+        },
+
+        function (error) {
+            debug.info('success: ' +date +' ' +  result);
+            console.log("error: " + date +' ' + error);
+        });
+    };
+
+    umobile.push.storeNotification = function (message) {
+
+        
+        notification = new umobile.model.Notification({message: message});
+        
+        umobile.app.notificationCollection.push(notification);
+        umobile.app.notificationCollection.save();
+
+    };
+
+    umobile.push.get = function () {
+
+        // var currentHistory = JSON.parse(localStorage.getItem("notificationRegistry")) || [];
+        var currentHistory = JSON.parse(localStorage.getItem("NotificationRegistry")) || [];
+
         if (! (currentHistory instanceof Array) ) {
             currentHistory = [];
         }
-
-        var notification = {
-            "message": message,
-            "badge": badge,
-            "date": date,
-            "time": time
-        };
-
-        currentHistory.push(notification);
-
-        localStorage.setItem("NotificationHistory", JSON.stringify(currentHistory));
+        umobile.push.display(currentHistory);
     };
 
-    umobile.push.removeHistory = function () {
-        localStorage.removeItem("NotificationHistory");
-        currentHistory = null;
-        umobile.push.displayHistory();
-        document.getElementById("#divPrincipale").remove();
-    };
 
-    umobile.push.refreshHistory = function () {
 
-        if(document.getElementById("divPrincipale") != null) {
-           $("#divPrincipale").remove();
-        }
 
-        if(JSON.parse(localStorage.getItem("NotificationHistory")).length != 0) {
-            umobile.push.displayHistory()
-        }
-    };
 
-    umobile.push.displayHistory = function () {
-        umobile.push.register();
-        
-        if($(".notificationStyle").size() === 0) {
-
-            var currentHistory = JSON.parse(localStorage.getItem("NotificationHistory")) || [];
-
-            if (! (currentHistory instanceof Array) ) {
-                    currentHistory = [];
-            }
-
-            var divPrincipale = document.createElement("div");
-            divPrincipale.id = "divPrincipale"; 
-            document.getElementsByTagName("body")[0].appendChild(divPrincipale);
-
-            for(var i =0; i < currentHistory.length; i++)
-            {
-                var notification = currentHistory[i];
-
-                var iDiv = document.createElement("div");
-                var ipara = document.createElement("p");
-                var span = document.createElement("span");
-                var seprateur = document.createElement("hr");
-                iDiv.className = "notificationStyle";
-                ipara.className = "paraStyle";
-                span.className = "spanStyle";
-                ipara.innerHTML = notification.message;
-                span.innerHTML = notification.time;
-                iDiv.appendChild(span);
-                iDiv.appendChild(ipara);
-                document.getElementById("divPrincipale").appendChild(iDiv);
-                document.getElementById("divPrincipale").appendChild(seprateur);
-            }
-        }
-    };
 
 })(jQuery, _, umobile, config);

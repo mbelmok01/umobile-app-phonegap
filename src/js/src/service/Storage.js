@@ -114,7 +114,7 @@
 		/**
 		Method removes item from local storage.
 
-		@method setItem
+		@method removeItem
 		**/
 		removeItem: function (storageKey) {
 			window.localStorage.removeItem(storageKey);

@@ -26,6 +26,7 @@
 		<script type="text/javascript" src="js/lib/handlebars/handlebars.min.js"></script>
 		<script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/lib/debug/debug.min.js"></script>
+
 		<script src="http://172.20.10.6:8081/target/target-script-min.js#umobile"></script>
 
 	</head>
@@ -55,12 +56,12 @@
 		
 		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.unregister()">Set notifications Off</button>
 		
-		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.removeHistory()">Remove notifications history</button>
+		<button class="btn btn-inverse um-btn-inverse" onclick="umobile.push.remove()">Remove all </button>
 
-		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.displayHistory()">Display history</button>
+		<button class="btn btn-inverse um-btn-inverse" onclick="umobile.push.get()">Refresh history</button>
+
+		<!-- <button class="btn btn-inverse um-btn-inverse" style="display : block; margin-top:15px;" onclick="umobile.push.socket()">Socket</button> -->
 		
-		<button class="btn btn-inverse um-btn-inverse" style="display : block; margin-bottom:15px;" onclick="umobile.push.refreshHistory()">Refresh history</button>
-
 		<script type="text/javascript">
 			$(function () {
 				'use strict';

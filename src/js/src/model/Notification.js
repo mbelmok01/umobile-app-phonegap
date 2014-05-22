@@ -3,17 +3,13 @@
 	'use strict';
 
 	/**
-	The Module model houses information relating to each
-	module or portlet.
-
-	@class Module
+	The Notification model houses information relating to user's notification.
+	
+	@class Notification
 	@submodule model
 	@namespace model
 	@constructor
 	**/
-
-	
-
 	umobile.model.Notification = Backbone.Model.extend({
 		/**
 		Property houses default model attributes.
@@ -23,10 +19,19 @@
 		**/
 		defaults: {
 			message: null,
-			data : null,
-			badge: null,
-			date : null,
-			time : null
+			date: new Date()
+		},
+
+		/**
+		Property houses validation rules.
+
+		@property validation
+		@type Object
+		**/
+		validation: {
+			message: {
+				required: true
+			}
 		},
 
 		/**
