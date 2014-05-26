@@ -30,7 +30,8 @@
 			template: '#views-partials-header',
 			home: '#homeButton',
 			login: '#loginButton',
-			logout: '#logoutButton'
+			logout: '#logoutButton',
+			notification : '#notificationButton'
 		},
 
 		/**
@@ -48,13 +49,14 @@
 		**/
 		toggleHeaderIcons: function () {
 			// Define.
-			var username, home, login, logout;
+			var username, home, login, logout, notification;
 
 			// Initialize.
 			username = this.credModel.get('username');
 			home = this.loc('home');
 			login = this.loc('login');
 			logout = this.loc('logout');
+			notification = this.loc('notification');
 
 			// Only toggle icons when our credential model
 			// contains a valid username.
@@ -63,6 +65,7 @@
 				// TODO: Implement logout functionality.
 				if (username === 'guest') {
 					login.removeClass('hidden');
+					notification.removeClass('hidden');
 					logout.addClass('hidden');
 				} else {
 					login.removeClass('hidden');
@@ -79,6 +82,9 @@
 					break;
 				case 'modules':
 					home.removeClass('hidden');
+					break;
+				case 'notification':
+					notification.addClass('hidden');
 					break;
 				}
 			}

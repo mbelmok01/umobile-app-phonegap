@@ -78,6 +78,7 @@
 			backgroundView = new umobile.view.Background();
 			backgroundView.render();
 		},
+		
 		/**
 		Method initializes the Footer view.
 

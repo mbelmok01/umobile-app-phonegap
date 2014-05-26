@@ -27,6 +27,7 @@
 		routes: {
 			'dashboard': 'dashboard',
 			'login': 'login',
+			'notification' : 'notification',
 			'modules/*module': 'modules',
 			'*other': 'dashboard'
 		},
@@ -49,6 +50,18 @@
 		login: function () {
 			var login = new umobile.view.LoginView();
 			umobile.app.viewManager.show(login);
+		},
+
+		/**
+		Method initializes the notification view.
+
+		@method notification
+		**/
+		notification: function () {
+			console.log("passage dans router.js ");
+			var notification = new umobile.view.NotificationView();
+			console.log("avant appel de render ");
+			umobile.app.viewManager.show(notification);
 		},
 
 		/**

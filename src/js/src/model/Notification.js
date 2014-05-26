@@ -10,6 +10,7 @@
 	@namespace model
 	@constructor
 	**/
+
 	umobile.model.Notification = Backbone.Model.extend({
 		/**
 		Property houses default model attributes.
@@ -17,9 +18,9 @@
 		@property defaults
 		@type Object
 		**/
+		
 		defaults: {
 			message: null,
-			date: new Date()
 		},
 
 		/**

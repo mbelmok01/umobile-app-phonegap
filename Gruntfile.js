@@ -179,6 +179,7 @@ module.exports = function (grunt) {
 						'src/js/src/view/Header.js',
 						'src/js/src/view/Footer.js',
 						'src/js/src/view/LoadedView.js',
+						'src/js/src/view/NotificationView.js',
 						'src/js/src/view/DashboardView.js',
 						'src/js/src/view/LoginView.js',
 						'src/js/src/view/Module.js',
