@@ -327,7 +327,7 @@ var umobile = {
 		umobile.initModels();
 		umobile.initRouter();
 		umobile.updateAppState();
-		// umobile.push.init();
+		umobile.push.init();
 	},
 
 	/**

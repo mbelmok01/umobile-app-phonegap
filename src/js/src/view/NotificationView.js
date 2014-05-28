@@ -29,19 +29,20 @@
 		@override Base
 		**/
 		selectors: {
-			template: '#views-partials-notificationview',
+			template: '#views-partials-notificationview'
 		},
 
-		renderNotification: function () {
-			console.log("dans render ");
-			
-			this.collection = umobile.app.notificationCollection;
 
+		displayNotifications: function () {
+
+			this.collection = umobile.app.notificationCollection;
+			
 			$("#notificationArea").remove();
 
 			var notificationArea = document.createElement("div");
 			notificationArea.id = "notificationArea";
-			// document.getElementsByTagName("body")[0].appendChild(notificationArea);
+			notificationArea.className = "um-notification-area";
+
 			$("#views-partials-notificationview").append(notificationArea);
 			
 			this.collection.each(function(model) {
@@ -59,9 +60,6 @@
 
 		        $("#notificationArea").append(div);
 			});
-
-			
-
 		},
 
 		/**

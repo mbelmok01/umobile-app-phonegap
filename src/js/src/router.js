@@ -58,9 +58,8 @@
 		@method notification
 		**/
 		notification: function () {
-			console.log("passage dans router.js ");
-			var notification = new umobile.view.NotificationView();
-			console.log("avant appel de render ");
+			var notification = new umobile.view.NotificationView({collection : umobile.app.notificationCollection});
+			notification.bind('render', notification.displayNotifications());
 			umobile.app.viewManager.show(notification);
 		},
 
