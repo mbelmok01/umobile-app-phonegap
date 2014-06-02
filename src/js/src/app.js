@@ -106,6 +106,14 @@ var umobile = {
 	push: {},
 
 	/**
+	Namespace for umobile websocket.
+
+	@submodule websocket
+	@namespace websocket
+	**/
+	websocket: {},
+
+	/**
 	Method parses the data received by the session.established event.
 	Iterates over layout JSON and adds modules (i.e. portlets) to
 	the modues array based upon the number of portlets described

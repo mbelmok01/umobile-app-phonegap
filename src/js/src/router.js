@@ -58,9 +58,15 @@
 		@method notification
 		**/
 		notification: function () {
-			var notification = new umobile.view.NotificationView({collection : umobile.app.notificationCollection});
-			notification.bind('render', notification.displayNotifications());
-			umobile.app.viewManager.show(notification);
+			var i = 0;
+
+			while(i<2) {
+				console.log("passage dans notification de router.js");
+				var notification = new umobile.view.NotificationView();
+				notification.displayNotifications();
+				umobile.app.viewManager.show(notification);
+				i++;
+			}
 		},
 
 		/**
@@ -84,6 +90,7 @@
 		@param {String} route Reference to full route path.
 		**/
 		onRouteChanged: function (route, routeParam) {
+			console.log("passage dans onRouteChanged");
 			// Define.
 			var className, root, view, path;
 
@@ -122,7 +129,6 @@
 
 			// Initialize the ViewManager.
 			umobile.app.viewManager = new umobile.view.ViewManager();
-
 			// Bind to all the routes. When they change, call
 			// the onRouteChanged method.
 			this.on('all', _.bind(this.onRouteChanged, this));

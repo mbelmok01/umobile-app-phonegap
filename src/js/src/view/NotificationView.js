@@ -29,7 +29,28 @@
 		@override Base
 		**/
 		selectors: {
-			template: '#views-partials-notificationview'
+			template: '#views-partials-notificationview',
+			refresh : '#refreshButton'
+		},
+
+		events: {
+			"click #refreshButton": "displayNotifications",
+			"click #removeButton": "removeHandler",
+			"click #setOnButton": "setOnHandler",
+			"click #setOffButton": "setOffHandler",
+		},
+
+		setOnHandler: function () {
+			umobile.push.register();
+		},
+
+		setOffHandler: function () {
+			umobile.push.unregister();
+		},
+
+		removeHandler: function () {
+			umobile.push.remove();
+			this.displayNotifications();
 		},
 
 

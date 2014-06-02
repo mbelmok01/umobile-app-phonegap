@@ -9,5 +9,11 @@
 		"prefix": "/css",
 		"debug": true
 	},
-	"plugins": ["../plugins/aerogear-pushplugin-cordova-0.0.3", "org.apache.cordova.media", "https://github.com/mkuklis/phonegap-websocket"]
+	"plugins": [
+		"../plugins/aerogear-pushplugin-cordova-0.0.3",
+		"org.apache.cordova.media",
+		"https://github.com/anismiles/websocket-android-phonegap",
+		"https://github.com/remy/PhoneGap-Plugin-WebSocket",
+		"org.apache.cordova.device"
+	]
 }

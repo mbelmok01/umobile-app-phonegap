@@ -69,6 +69,7 @@
         console.log('MESSAGE -> MSG: ' + e.alert);
 
         umobile.push.storeNotification(e.alert);
+        // umobile.websocket.server();
     };
 
     umobile.push.storeNotification = function (message, date, time) {
@@ -95,44 +96,6 @@
         // flush the notificationRegistry
         umobile.app.notificationCollection.reset();
         umobile.app.notificationCollection.save();
-        umobile.push.get();
-    };
-
-    umobile.push.get = function () {
-
-        umobile.push.display(umobile.app.notificationCollection);
-    };
-
-    umobile.push.display = function (notificationCollection) {
-
-        $('#notificationArea').remove();
-
-        var notificationArea = document.createElement("div");
-        notificationArea.id = "notificationArea";
-        notificationArea.className = "um-notification-area";
-
-        $("#view").append(notificationArea);
-
-        // for each notification
-        for(var i =0; i < notificationCollection.length; i++)
-        {
-            var notification = notificationCollection.models[i];
-            console.log(notification);
-            // creates a div element witch contains a span (date et time) and a paragraph (message of the notification)
-            var div = document.createElement('div');
-            var span = document.createElement('span');
-            var para = document.createElement('p');
-            var seprateur = document.createElement('hr');
-            
-            span.innerHTML = 'Recu le '+notification.attributes.date+ ' a '+notification.attributes.time;
-            para.innerHTML = notification.attributes.message;
-
-            div.appendChild(span);
-            div.appendChild(para);
-            div.appendChild(seprateur);
-
-            document.getElementById('notificationArea').appendChild(div);
-        }
     };
 
 
