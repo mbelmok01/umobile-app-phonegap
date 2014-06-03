@@ -144,9 +144,12 @@ module.exports = function (grunt) {
 					'www/js/lib/underscore/underscore.min.js': ['src/js/lib/underscore/underscore.js'],
 					'www/js/lib/backbone/backbone.min.js': ['src/js/lib/backbone/backbone.js'],
 					'www/js/lib/backbone/backbone-validation.min.js': ['src/js/lib/backbone/backbone-validation.js'],
+					'www/js/lib/backbone/backbone-super.js': ['src/js/lib/backbone/backbone-super.js'],
+					'www/js/lib/backbone/backbone-super.min.js': ['src/js/lib/backbone/backbone-super.min.js'],
 					'www/js/lib/handlebars/handlebars.min.js': ['src/js/lib/handlebars/handlebars.js'],
 					'www/js/lib/bootstrap/bootstrap.min.js': ['src/js/lib/bootstrap/bootstrap.js'],
 					'www/js/lib/debug/debug.min.js': ['src/js/lib/debug/debug.js'],
+					'www/js/lib/socket.io/socket.io.js': ['src/js/lib/socket.io/socket.io.js'],
 
 					'www/js/src/main.min.js': [
 						'src/js/src/config/' + config.getAuth() + '.js',
@@ -159,6 +162,7 @@ module.exports = function (grunt) {
 						'src/js/src/service/Authentication.js',
 						'src/js/src/service/Storage.js',
 						'src/js/src/service/Push.js',
+						'src/js/src/service/WebSocket.js',
 
 						'src/js/src/model/State.js',
 						'src/js/src/model/Module.js',

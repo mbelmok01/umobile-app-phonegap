@@ -336,6 +336,9 @@ var umobile = {
 		umobile.initRouter();
 		umobile.updateAppState();
 		umobile.push.init();
+
+		// When the button is clicked, a message is send to the serveur
+		$('#poke').click(umobile.websocket.initConnection);
 	},
 
 	/**
@@ -347,9 +350,9 @@ var umobile = {
 	initialize: function () {
 		'use strict';
 		// Listen to onDeviceReady event.
-		document.addEventListener('deviceready', umobile.onDeviceReady, false);
-		if (config.loginFn === 'mockLogin') {
+		// document.addEventListener('deviceready', umobile.onDeviceReady, false);
+		// if (config.loginFn === 'mockLogin') {
 			umobile.onDeviceReady();
-		}
+		// }
 	}
 };

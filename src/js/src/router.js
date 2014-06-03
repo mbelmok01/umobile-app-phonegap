@@ -61,7 +61,7 @@
 			var i = 0;
 
 			while(i<2) {
-				console.log("passage dans notification de router.js");
+				console.log('passage dans notification de router.js');
 				var notification = new umobile.view.NotificationView();
 				notification.displayNotifications();
 				umobile.app.viewManager.show(notification);
@@ -90,7 +90,7 @@
 		@param {String} route Reference to full route path.
 		**/
 		onRouteChanged: function (route, routeParam) {
-			console.log("passage dans onRouteChanged");
+			console.log('passage dans onRouteChanged');
 			// Define.
 			var className, root, view, path;
 

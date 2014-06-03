@@ -34,10 +34,10 @@
 		},
 
 		events: {
-			"click #refreshButton": "displayNotifications",
-			"click #removeButton": "removeHandler",
-			"click #setOnButton": "setOnHandler",
-			"click #setOffButton": "setOffHandler",
+			'click #refreshButton': 'displayNotifications',
+			'click #removeButton': 'removeHandler',
+			'click #setOnButton': 'setOnHandler',
+			'click #setOffButton': 'setOffHandler',
 		},
 
 		setOnHandler: function () {
@@ -58,28 +58,28 @@
 
 			this.collection = umobile.app.notificationCollection;
 			
-			$("#notificationArea").remove();
+			$('#notificationArea').remove();
 
-			var notificationArea = document.createElement("div");
-			notificationArea.id = "notificationArea";
-			notificationArea.className = "um-notification-area";
+			var notificationArea = document.createElement('div');
+			notificationArea.id = 'notificationArea';
+			notificationArea.className = 'um-notification-area';
 
-			$("#views-partials-notificationview").append(notificationArea);
+			$('#views-partials-notificationview').append(notificationArea);
 			
 			this.collection.each(function(model) {
-				var div = document.createElement("div");
-		        var span = document.createElement("span");
-		        var para = document.createElement("p");
-		        var seprateur = document.createElement("hr");
+				var div = document.createElement('div');
+		        var span = document.createElement('span');
+		        var para = document.createElement('p');
+		        var seprateur = document.createElement('hr');
 		        
-		        span.innerHTML = "Recu le "+model.attributes.date+ " à "+model.attributes.time;
+		        span.innerHTML = 'Recu le ' + model.attributes.date + ' à ' + model.attributes.time;
 		        para.innerHTML = model.attributes.message;
 
 		        div.appendChild(span);
 		        div.appendChild(para);
 		        div.appendChild(seprateur);
 
-		        $("#notificationArea").append(div);
+		        $('#notificationArea').append(div);
 			});
 		},
 

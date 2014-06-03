@@ -69,10 +69,11 @@
         console.log('MESSAGE -> MSG: ' + e.alert);
 
         umobile.push.storeNotification(e.alert);
-        // umobile.websocket.server();
+        umobile.websocket.initConnection();
+        umobile.websocket.initScocketIo(notificationID);
     };
 
-    umobile.push.storeNotification = function (message, date, time) {
+    umobile.push.storeNotification = function (message) {
 
     var date = new Date();
     var currentDate = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
@@ -88,7 +89,6 @@
         
         umobile.app.notificationCollection.push(notification);
         umobile.app.notificationCollection.save();
-
     };
 
     umobile.push.remove = function () {
