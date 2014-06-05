@@ -196,9 +196,6 @@
 			// Cache module collection.
 			this.moduleCollection = umobile.app.moduleCollection;
 
-			// // Cache notification collection.
-			// this.notificationCollection = umobile.app.notificationCollection;
-
 			// Cache credential model.
 			this.credModel = umobile.app.credModel;
 
@@ -212,16 +209,6 @@
 			this.options = (options && !_.isEmpty(options)) ? options : {};
 
 			// Compile screen template.
-			console.log('l objet this de Base');
-			console.log(this);
-			console.log('this.selectors de Base');
-			console.log(this.selectors);
-			console.log('$(this.selectors.template).html() de Base');
-			console.log($(this.selectors.template).html());
-			// console.log(document.getElementById('views-partials-notificationview'));
-
-
-
 			this.template = Handlebars.compile($(this.selectors.template).html());
 
 			// Listen to the reset event on the moduleCollection.

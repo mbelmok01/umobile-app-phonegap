@@ -39,11 +39,8 @@
 		@method cleanContainers
 		**/
 		cleanContainers: function () {
-			console.log('passage dans cleanContainers');
-
 			var notifier = this.loc('notifier'),
 				moduleList = this.loc('moduleList');
-
 
 			notifier.empty().hide();
 			moduleList.empty().hide();
@@ -78,7 +75,6 @@
 		@method renderNotifier
 		**/
 		renderNotifier: function () {
-			console.log('passage dans renderNotifier');
 			// Define.
 			var notifier, notifierModel, notifierView;
 
@@ -98,7 +94,6 @@
 		@override LoadedView
 		**/
 		renderContent: function (collection) {
-			console.log('passage dans renderContent');
 			this.cleanContainers();
 			this.renderModules();
 		},

@@ -209,19 +209,6 @@
 			this.options = (options && !_.isEmpty(options)) ? options : {};
 
 			// Compile screen template.
-			// console.log('(this.selectors.template).template.html()');
-			// console.log($(this.selectors.template).html());
-			// console.log('this.selectors');
-			// console.log(this.selectors);
-			// console.log('this');
-			// console.log(this);
-			// console.log(document.getElementById('views-partials-notificationview'));
-
-			
-			console.log('mon objet this');
-			console.log(this);
-			
-			// this.template = Handlebars.compile($(this.selectors.template).html());
 			this.template = Handlebars.compile($('#views-partials-notificationview').html());
 			
 			// Listen to the reset event on the notificationCollection.

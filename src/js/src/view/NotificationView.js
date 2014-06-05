@@ -24,29 +24,21 @@
 
 		
 		renderNotifications: function () {
-			// console.log('entree dans renderNotifications');
 			// Define & initialize.
 			var notificationList = this.loc('notificationList');
 			var	notifications = umobile.app.notificationCollection.toJSON();
 				
 			// Iterate over notifications and initialize each notification.
 			_.each(notifications, function (notification, idx) {
-				console.log('mon objet notification');
-				console.log(notification);
-				console.log('mon idx');
-				console.log(idx);
 				var notificationView = new umobile.view.Notification({
 					model : notification
 				});
-				console.log('mon notificationView.render().el');
-				console.log(notificationView.render().el);
 				notificationList.append(notificationView.render().$el).show();
 			}, this);
 		},
 
 		
 		renderContent: function (collection) {
-			console.log('passage dans renderContent');
 			this.cleanContainers();
 			this.renderNotifications();
 		},

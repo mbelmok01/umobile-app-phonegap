@@ -97,17 +97,11 @@
 			// The render method gets called numerous time in the present architecture.
 			// We only want to move forward when actual data is available.
 			if (!_.isEmpty(collection)) {
-				// console.log('1er passage dans render de SLoadedView');
 				// We want to make sure we are not calling loaded views that have
 				// been unloaded. To insure this, we compare the current view name
 				// on the 'this' object with the view stored in the ViewManager.
 				// The ViewManager will always have the correct view to load.
 				if (this.getViewName() === currentView) {
-					// console.log('2nd passage dans render de SLoadedView');
-					// console.log('currentView : ' + currentView);
-					
-					console.log('mon this.$el');
-					console.log(this.$el);
 					// Render main template.
 					this.$el.addClass('hidden')
 						.html(this.template(this.options))

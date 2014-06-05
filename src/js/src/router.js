@@ -60,29 +60,7 @@
 		notification: function () {
 			var notification = new umobile.view.NotificationView();
 			umobile.app.viewManager.show(notification);
-		},		
-
-		/**
-		Method initializes the notification view.
-
-		@method notification
-		**/
-		// notification: function () {
-		// 	var i = 0;
-
-		// 	while(i<2) {
-		// 		console.log('passage dans notification de router.js');
-		// 		var notification = new umobile.view.NotificationView();
-		// 		notification.displayNotifications();
-		// 		umobile.app.viewManager.show(notification);
-		// 		i++;
-		// 	}
-		// },
-		// notification: function () {
-		// 		console.log('passage dans notification de router.js');
-		// 		var notification = new umobile.view.NotificationView();
-		// 		umobile.app.viewManager.show(notification);
-		// },
+		},
 
 		/**
 		Method initializes the Module view.
@@ -95,19 +73,6 @@
 			module = new umobile.view.ModuleView({path: path});
 			umobile.app.viewManager.show(module);
 		},
-
-		/**
-		Method initializes the notification view.
-
-		@method notification
-		**/
-		// notification: function () {
-		// 	console.log('passage dans notifications de router');
-		// 	var message, notification;
-		// 	// message = umobile.utility.Utils.getParameter('url', Backbone.history.fragment);
-		// 	notification = new umobile.view.NotificationView({message: "toto"});
-		// 	umobile.app.viewManager.show(notification);
-		// },
 
 		/**
 		Listens for the route to change. When triggered,
