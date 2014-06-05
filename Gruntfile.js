@@ -183,12 +183,16 @@ module.exports = function (grunt) {
 						'src/js/src/view/Header.js',
 						'src/js/src/view/Footer.js',
 						'src/js/src/view/LoadedView.js',
-						'src/js/src/view/NotificationView.js',
 						'src/js/src/view/DashboardView.js',
 						'src/js/src/view/LoginView.js',
 						'src/js/src/view/Module.js',
 						'src/js/src/view/ModuleView.js',
-						'src/js/src/view/Notifier.js'
+						'src/js/src/view/Notifier.js',
+						'src/js/src/view/SBase.js',
+						'src/js/src/view/SLoadeadView.js',
+						'src/js/src/view/Notification.js',
+						'src/js/src/view/NotificationView.js'
+						
 					]
 				}
 			}
@@ -248,15 +252,28 @@ module.exports = function (grunt) {
 					'views/*.html',
 					'views/modules/*.html',
 					'views/partials/*.html',
-					'src/less/**'
+					'src/less/**',
+					'src/js/**'
 				],
-				tasks: [
-					'compilehtml',
-					'appendpartials',
-					'less'
-				]
+				tasks: ['default']
 			}
 		}
+		
+		// watch: {
+		// 	dev: {
+		// 		files: [
+		// 			'views/*.html',
+		// 			'views/modules/*.html',
+		// 			'views/partials/*.html',
+		// 			'src/less/**'
+		// 		],
+		// 		tasks: [
+		// 			'compilehtml',
+		// 			'appendpartials',
+		// 			'less'
+		// 		]
+		// 	}
+		// }
 	});
 
 	// Load plugins/tasks.

@@ -187,6 +187,7 @@ var umobile = {
 		return modules;
 	},
 
+	
 	/**
 	Method leverages the SessionTracker plugin to determine
 	whether or not a valid session still exists.
@@ -349,10 +350,14 @@ var umobile = {
 	**/
 	initialize: function () {
 		'use strict';
-		// Listen to onDeviceReady event.
-		// document.addEventListener('deviceready', umobile.onDeviceReady, false);
-		// if (config.loginFn === 'mockLogin') {
+		// Check if uMobile is running on Cordova/Phonegap
+		if((window.cordova || window.PhoneGap || window.phonegap) && /^file:\/{3}[^\/]/i.test(window.location.href)) {
+			// Listen to onDeviceReady event.
+			console.log('passage dans Initialize');
+			alert('passage dans Initialize');
+			document.addEventListener('deviceready', umobile.onDeviceReady, false);
+		} else {
 			umobile.onDeviceReady();
-		// }
+		}
 	}
 };

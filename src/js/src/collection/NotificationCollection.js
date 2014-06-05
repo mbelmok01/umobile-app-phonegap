@@ -42,28 +42,6 @@
 		},
 
 		/**
-		Method overrides Backbone.push. Makes a read call to the
-		umobile.storage.sync method.
-
-		// @method push
-		// @param {Object} options Success and error callbacks.
-		// **/
-		// push: function (options) {
-		// 	this.sync('create', this, options);
-		// },
-
-		// *
-		// Method overrides Backbone.pop. Makes a read call to the
-		// umobile.storage.sync method.
-
-		// @method pop
-		// @param {Object} options Success and error callbacks.
-		// *
-		// pop: function (options) {
-		// 	this.sync('delete', this, options);
-		// },
-
-		/**
 		Method overrides Backbone.sync with umobile.storage.sync method.
 		Persists the state of the model to the server.
 

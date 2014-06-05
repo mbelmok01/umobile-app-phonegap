@@ -7,11 +7,11 @@
 	that all views require.
 
 	@class Base
-	@submodule view
+	@subnotification view
 	@namespace view
 	@constructor
 	**/
-	umobile.view.Base = Backbone.View.extend({
+	umobile.view.SBase = Backbone.View.extend({
 		/**
 		Property houses DOM selectors.
 
@@ -29,12 +29,12 @@
 		template: {},
 
 		/**
-		Property houses collection of modules.
+		Property houses collection of notifications.
 
-		@property moduleCollection
+		@property notificationCollection
 		@type Object
 		**/
-		moduleCollection: {},
+		NotificationCollection: {},
 
 		/**
 		Property houses the Credential model.
@@ -116,11 +116,11 @@
 		},
 
 		/**
-		Method is triggered when the Module Collection is reset.
+		Method is triggered when the Notification Collection is reset.
 		This method is meant to be implemented by child views.
 
 		@method onCollectionReset
-		@param {Object} collection Collection of module objects.
+		@param {Object} collection Collection of notification objects.
 		**/
 		onCollectionReset: function (collection) {},
 
@@ -167,7 +167,7 @@
 		destroy: function () {
 			// Unbind models, collections & listners.
 			this.unbind();
-			this.moduleCollection.off('reset', this.onCollectionReset, this);
+			this.notificationCollection.off('reset', this.onCollectionReset, this);
 			this.credModel.off('change', this.onCredChanged, this);
 			this.unsubscribe('route.changed', this.onRouteChanged);
 
@@ -193,11 +193,8 @@
 			// Bind all properties & methods.
 			_.bindAll(this);
 
-			// Cache module collection.
-			this.moduleCollection = umobile.app.moduleCollection;
-
-			// // Cache notification collection.
-			// this.notificationCollection = umobile.app.notificationCollection;
+			// Cache notification collection.
+			this.notificationCollection = umobile.app.notificationCollection;
 
 			// Cache credential model.
 			this.credModel = umobile.app.credModel;
@@ -212,20 +209,23 @@
 			this.options = (options && !_.isEmpty(options)) ? options : {};
 
 			// Compile screen template.
-			console.log('l objet this de Base');
-			console.log(this);
-			console.log('this.selectors de Base');
-			console.log(this.selectors);
-			console.log('$(this.selectors.template).html() de Base');
-			console.log($(this.selectors.template).html());
+			// console.log('(this.selectors.template).template.html()');
+			// console.log($(this.selectors.template).html());
+			// console.log('this.selectors');
+			// console.log(this.selectors);
+			// console.log('this');
+			// console.log(this);
 			// console.log(document.getElementById('views-partials-notificationview'));
 
-
-
-			this.template = Handlebars.compile($(this.selectors.template).html());
-
-			// Listen to the reset event on the moduleCollection.
-			this.moduleCollection.on('reset', this.onCollectionReset, this);
+			
+			console.log('mon objet this');
+			console.log(this);
+			
+			// this.template = Handlebars.compile($(this.selectors.template).html());
+			this.template = Handlebars.compile($('#views-partials-notificationview').html());
+			
+			// Listen to the reset event on the notificationCollection.
+			this.notificationCollection.on('reset', this.onCollectionReset, this);
 
 			// Listen for the 'change' event on the credential model.
 			this.credModel.on('change', this.onCredChanged, this);

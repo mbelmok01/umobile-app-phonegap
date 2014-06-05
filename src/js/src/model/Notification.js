@@ -20,19 +20,9 @@
 		**/
 		
 		defaults: {
-			message: null,
-		},
-
-		/**
-		Property houses validation rules.
-
-		@property validation
-		@type Object
-		**/
-		validation: {
-			message: {
-				required: true
-			}
+			message: 'message',
+			date: 'date',
+			time: 'time'
 		},
 
 		/**
