@@ -1,102 +1,69 @@
 /*global window:true, _:true, document:true, jQuery:true, umobile:true, config:true, console:true */
 (function ($, _, umobile, config) {
 
+    
     umobile.push.init = function() {
 
         if(umobile.app.stateModel.get('notification') === null)
         {
-            umobile.push.register();   
+            umobile.push.register();
         }
     };
 
     umobile.push.register = function() {
+
+        var username = umobile.app.credModel.get('username');
         var pushConfig = {
-                senderID: '560741818531',
-                pushServerURL: 'http://10.13.3.240:8080/ag-push/',
-                variantID: '6423790e-74a9-426e-b5f3-649a9745c026',
-                variantSecret: 'c1842770-ebcd-45bf-b7c5-b83a00de1bc8'
-            }
-                        
-            push.register(umobile.push.successRegister, umobile.push.errorHandler, {'ecb': 'umobile.push.onNotification', pushConfig: pushConfig});
+            senderID: "974817829387",
+            pushServerURL: "http://10.13.3.240:8080/ag-push/",
+            variantID: "83a837f9-d00b-4fae-9217-1e6b120774ea",
+            variantSecret: "11f594bd-d634-444f-8ed8-899c84a54826",
+            alias: username
+        };
+
+        try {
+
+            push.register(onNotification, successHandler, errorHandler, pushConfig);
+        } catch (err) {
+            txt = "There was an error on this page.\n\n";
+            txt += "Error description: " + err.message + "\n\n";
+            alert(txt);
+        }
     };
 
     umobile.push.unregister = function() {
         
-        push.unregister(umobile.push.successUnregister, umobile.push.errorHandler);
+        push.unregister(successUnregister, errorHandler);
     };
 
-    umobile.push.successRegister = function (success) {
-        debug.info('success: ' + success);
-        umobile.app.stateModel.set({notification : 'enabled'});
-        umobile.app.stateModel.save();
-    };
+    function successHandler() {
+        $("body").append('<li>success</li>');
+    }
 
-    umobile.push.successUnregister = function (success) {
-        debug.info('success: ' + success);
-        umobile.app.stateModel.set({notification : 'disabled'});
-        umobile.app.stateModel.save();
-    };
+    function errorHandler(error) {
+        $("body").append('<li>error:' + error + '</li>');
+    }
 
-    umobile.push.errorHandler = function (error) {
-        debug.info('success: ' + error);
-    };
+    function onNotification(e) {
+        var statusList = $("body");
 
-    umobile.push.onNotification = function(e) {
-
-        // if this flag is set, this notification happened while we were in the foreground.
-        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-        if (e.foreground) {
-
-            console.log('--INLINE NOTIFICATION--');
-            // if the notification contains a soundname, play it.
-            var my_media = new Media('/android_asset/www/' + e.sound);
-            my_media.play();
+        // on android we could play the sound, if we add the Media plugin
+        if (e.sound && (typeof Media != 'undefined')) {
+            var media = new Media("/android_asset/www/" + e.sound + '.wav');
+            media.play();
         }
-        else {   // otherwise we were launched because the user touched a notification in the notification tray.
-            if (e.coldstart) {
-                console.log('--COLDSTART NOTIFICATION--');
-            }
-            else {
-                console.log('--BACKGROUND NOTIFICATION--');
-            }
+
+        if (e.coldstart) {
+            statusList.append('<li>--COLDSTART NOTIFICATION--' + '</li>');
         }
+
+        statusList.append('<li>MESSAGE -> MSG: ' + e.alert + '</li>');
 
         //only on ios
         if (e.badge) {
-          push.setApplicationIconBadgeNumber(successHandler, e.badge);
+            push.setApplicationIconBadgeNumber(successHandler, e.badge);
         }
-
-        console.log('MESSAGE -> MSG: ' + e.alert);
-
-        umobile.push.storeNotification(e.alert);
-        umobile.websocket.initConnection();
-        umobile.websocket.initScocketIo(notificationID);
-    };
-
-    umobile.push.storeNotification = function (message) {
-
-    var date = new Date();
-    var currentDate = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
-    var currentTime = date.getHours() + ':' + date.getMinutes();
-        
-        notification = new umobile.model.Notification(
-            {
-                message: message,
-                date: currentDate,
-                time: currentTime
-            }
-        );
-        
-        umobile.app.notificationCollection.push(notification);
-        umobile.app.notificationCollection.save();
-    };
-
-    umobile.push.remove = function () {
-        
-        // flush the notificationRegistry
-        umobile.app.notificationCollection.reset();
-        umobile.app.notificationCollection.save();
-    };
+    }
 
 
 })(jQuery, _, umobile, config);

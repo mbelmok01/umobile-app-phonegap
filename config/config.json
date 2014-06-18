@@ -10,7 +10,7 @@
 		"debug": true
 	},
 	"plugins": [
-		"../plugins/aerogear-pushplugin-cordova-0.0.3",
+		"https://github.com/aerogear/aerogear-pushplugin-cordova/",
 		"org.apache.cordova.media",
 		"org.apache.cordova.device",
 		"https://github.com/mkuklis/phonegap-websocket"

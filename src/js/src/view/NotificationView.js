@@ -10,9 +10,31 @@
 		
 		selectors: {
 			template: '#views-partials-notificationsview',
-			notificationList: '#notificationList'
+			notificationList: '#notificationList',
+			buttonOn : '#buttonOn',
+			buttonOff : '#buttonOff'
 		},
 
+		/**
+		Property houses Backbone events object.
+
+		@property events
+		@type Object
+		**/
+		events: {
+			'click #buttonOn': 'setOnHandler',
+			'click #buttonOff' : 'setOffHandler'
+		},
+
+		setOnHandler: function () {
+
+			umobile.push.register();
+		},
+
+		setOffHandler: function () {
+
+			umobile.push.unregister();
+		},
 		
 		cleanContainers: function () {
 			// console.log('passage dans cleanContainers');
@@ -22,7 +44,6 @@
 			notificationList.empty().hide();
 		},
 
-		
 		renderNotifications: function () {
 			// Define & initialize.
 			var notificationList = this.loc('notificationList');

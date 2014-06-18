@@ -336,7 +336,7 @@ var umobile = {
 		umobile.initModels();
 		umobile.initRouter();
 		umobile.updateAppState();
-		umobile.push.init();
+		// umobile.push.init();
 
 		// When the button is clicked, a message is send to the serveur
 		$('#poke').click(umobile.websocket.initConnection);
@@ -353,8 +353,6 @@ var umobile = {
 		// Check if uMobile is running on Cordova/Phonegap
 		if((window.cordova || window.PhoneGap || window.phonegap) && /^file:\/{3}[^\/]/i.test(window.location.href)) {
 			// Listen to onDeviceReady event.
-			console.log('passage dans Initialize');
-			alert('passage dans Initialize');
 			document.addEventListener('deviceready', umobile.onDeviceReady, false);
 		} else {
 			umobile.onDeviceReady();
