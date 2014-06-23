@@ -12,7 +12,8 @@
 			template: '#views-partials-notificationsview',
 			notificationList: '#notificationList',
 			buttonOn : '#buttonOn',
-			buttonOff : '#buttonOff'
+			buttonOff : '#buttonOff',
+			buttonRemove : '#buttonRemove'
 		},
 
 		/**
@@ -22,8 +23,9 @@
 		@type Object
 		**/
 		events: {
-			'click #buttonOn': 'setOnHandler',
-			'click #buttonOff' : 'setOffHandler'
+			'click #buttonOn' : 'setOnHandler',
+			'click #buttonOff' : 'setOffHandler',
+			'click #buttonRemove' : 'removeHandler'
 		},
 
 		setOnHandler: function () {
@@ -34,6 +36,10 @@
 		setOffHandler: function () {
 
 			umobile.push.unregister();
+		},
+
+		removeHandler: function () {
+			umobile.push.remove();
 		},
 		
 		cleanContainers: function () {

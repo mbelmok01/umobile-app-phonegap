@@ -339,7 +339,7 @@ var umobile = {
 		// umobile.push.init();
 
 		// When the button is clicked, a message is send to the serveur
-		$('#poke').click(umobile.websocket.initConnection);
+		// $('#poke').click(umobile.websocket.initConnection);
 	},
 
 	/**

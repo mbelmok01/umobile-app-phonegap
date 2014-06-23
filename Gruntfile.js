@@ -201,13 +201,13 @@ module.exports = function (grunt) {
 		targethtml: {
 			web: {
 				files: {
-			      'www/index.html': 'views/index.html'
-			    }
+					'www/index.html': 'views/index.html'
+			  }
 			},
 			phonegap: {
 				files: {
-			      'www/index.html': 'views/index.html'
-			    }
+					'www/index.html': 'views/index.html'
+				}
 			}
 		},
 
