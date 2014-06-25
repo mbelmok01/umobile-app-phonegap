@@ -4,19 +4,20 @@
 
 	/**
 	
-	@class Notification
+	@class NotificationE
 	@subnotification view
 	@namespace view
 	@constructor
 	**/
-	umobile.view.Notification = umobile.view.Base.extend({
+	umobile.view.NotificationE = umobile.view.Base.extend({
 		/**
 		Property houses HTML tag name used to build view.
 
 		@property tagName
 		@type String
 		**/
-		tagName: 'li',
+		tagName: 'div',
+		
 
 		/**
 		Property houses DOM selectors.
@@ -25,7 +26,7 @@
 		@type Object
 		**/
 		selectors: {
-			template: '#views-partials-notification'
+			template: '#views-partials-notificatione'
 		}
 	});
 

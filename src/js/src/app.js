@@ -234,6 +234,7 @@ var umobile = {
 	**/
 	updateAppState: function () {
 		'use strict';
+		umobile.app.notificationCollection.fetch();
 		umobile.app.stateModel.fetch({
 			success: _.bind(function (stateModel) {
 				umobile.app.credModel.fetch({
@@ -268,7 +269,7 @@ var umobile = {
 		umobile.app.credModel = new umobile.model.Credential();
 		umobile.app.moduleCollection = new umobile.collection.ModuleCollection();
 		umobile.app.notificationCollection = new umobile.collection.NotificationCollection();
-		umobile.app.notificationCollection.fetch();
+		
 	},
 
 	/**
@@ -339,7 +340,7 @@ var umobile = {
 		// umobile.push.init();
 
 		// When the button is clicked, a message is send to the serveur
-		// $('#poke').click(umobile.websocket.initConnection);
+		$('#poke').click(umobile.websocket.initConnection);
 	},
 
 	/**

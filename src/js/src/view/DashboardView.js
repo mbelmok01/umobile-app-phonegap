@@ -58,10 +58,10 @@
 
 			// Iterate over modules and initialize each module view.
 			_.each(modules, function (module, idx) {
-				console.log('mon module');
-				console.log(module);
-				console.log('mon idx');
-				console.log(idx);
+				// console.log('mon module');
+				// console.log(module);
+				// console.log('mon idx');
+				// console.log(idx);
 				var moduleView = new umobile.view.Module({
 					model: module
 				});

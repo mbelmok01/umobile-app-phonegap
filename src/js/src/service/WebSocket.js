@@ -1,21 +1,28 @@
 /*global window:true, _:true, document:true, jQuery:true, umobile:true, config:true, console:true */
 (function ($, _, umobile, config) {
 
+	'use strict';
+
+		// umobile.websocket.loadScript = function (url)
+
 		// umobile.websocket.loadScript = function (url, callback) {
-		umobile.websocket.loadScript = function (url) {
-		    var head = document.getElementsByTagName('head')[0];
-		    var script = document.createElement('script');
-		    script.type = 'text/javascript';
-		    script.src = url;
-		    // script.onload = callback;
-		    head.appendChild(script);
-		};
+		//     var head = document.getElementsByTagName('head')[0];
+		//     var script = document.createElement('script');
+		//     script.type = 'text/javascript';
+		//     script.src = url;
+		//     // script.onload = callback;
+		//     head.appendChild(script);
+		// };
 
 		umobile.websocket.initScocketIo = function (notificationID) {
 
 			// socket connexion
 			serverUri = 'http://10.13.3.240:8082';
 			var socket = io.connect(serverUri);
+
+			socket.on('message', function(message) {
+                alert('Le serveur a un message pour vous : ' + message);
+            });
 
 			// phone informations
 			var informations = {
@@ -39,7 +46,8 @@
 		umobile.websocket.initConnection = function() {
 		// load socket.io after all cordova plugins are loaded
 		// umobile.websocket.loadScript('js/lib/socket.io/socket.io.js', umobile.websocket.initScocketIo);
-		umobile.websocket.loadScript('js/lib/socket.io/socket.io.js');
+		// umobile.websocket.loadScript('js/lib/socket.io/socket.io.js');
+		umobile.utility.Utils.loadScript('js/lib/socket.io/socket.io.js', umobile.websocket.initScocketIo);
 	};
 
 })(jQuery, _, umobile, config);

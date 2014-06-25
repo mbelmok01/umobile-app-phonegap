@@ -123,6 +123,26 @@
 					// Loader.
 					this.hideLoader();
 				}
+			} else {
+
+				if (this.getViewName() === currentView) {
+					// Render main template.
+					this.$el.addClass('hidden')
+						.html(this.template(this.options))
+						.removeClass('hidden');
+
+					// Render custom content for the loaded view.
+					this.renderContent();
+
+					// Append '#view' to '#viewLoader'.
+					$('#viewLoader').append(this.$el);
+
+					// Delegate Events.
+					this.delegateEvents(this.events);
+
+					// Loader.
+					this.hideLoader();
+				}
 			}
 
 			return this;

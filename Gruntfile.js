@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 
 		phonegap: {
 			config: {
-			 	root: 'www',
+				root: 'www',
 				config: 'config/config.xml',
 				cordova: '.cordova',
 				path: 'phonegap',
@@ -39,15 +39,15 @@ module.exports = function (grunt) {
 
 				// Android-only integer version to increase with each release.
 				// See http://developer.android.com/tools/publishing/versioning.html
-				versionCode: function() { return(1) },
+				versionCode: function() { return(1); },
 
 				// Android-only options that will override the defaults set by Phonegap in the
 				// generated AndroidManifest.xml
 				// See https://developer.android.com/guide/topics/manifest/uses-sdk-element.html
-				minSdkVersion: function() { return(10) },
-				targetSdkVersion: function() { return(19) }
+				minSdkVersion: function() { return(10); },
+				targetSdkVersion: function() { return(19); }
 			}
-	  	},
+		},
 
 		// Cleans out directories.
 		clean: {
@@ -191,9 +191,9 @@ module.exports = function (grunt) {
 						'src/js/src/view/SBase.js',
 						'src/js/src/view/SLoadeadView.js',
 						'src/js/src/view/Notification.js',
+						'src/js/src/view/NotificationE.js',
 						'src/js/src/view/NotificationView.js'
-						
-					]
+						]
 				}
 			}
 		},
@@ -202,7 +202,7 @@ module.exports = function (grunt) {
 			web: {
 				files: {
 					'www/index.html': 'views/index.html'
-			  }
+				}
 			},
 			phonegap: {
 				files: {
