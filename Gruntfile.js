@@ -149,7 +149,7 @@ module.exports = function (grunt) {
 					'www/js/lib/handlebars/handlebars.min.js': ['src/js/lib/handlebars/handlebars.js'],
 					'www/js/lib/bootstrap/bootstrap.min.js': ['src/js/lib/bootstrap/bootstrap.js'],
 					'www/js/lib/debug/debug.min.js': ['src/js/lib/debug/debug.js'],
-					'www/js/lib/socket.io/socket.io.js': ['src/js/lib/socket.io/socket.io.js'], 
+					'www/js/lib/socket.io/socket.io.js': ['src/js/lib/socket.io/socket.io.js'],
 
 					'www/js/src/main.min.js': [
 						'src/js/src/config/' + config.getAuth() + '.js',

@@ -2,6 +2,16 @@
 (function ($, _, umobile, config) {
     'use strict';
 
+    /**
+    Manages push notification process for the umobile application.
+    @submodule Push
+    @namespace Push
+    **/
+
+    /**
+    Method registers the authentificated user at first start
+    @method init
+    **/
     umobile.push.init = function() {
 
         if(umobile.app.stateModel.get('notification') === null) {
@@ -9,8 +19,12 @@
         }
     };
 
+    /**
+    Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    @method register
+    **/
     umobile.push.register = function() {
-        
+
         var auth = umobile.app.stateModel.get('authenticated');
         
         if(auth !== false) {
@@ -18,67 +32,81 @@
             var username = umobile.app.credModel.get('username');
 
             var pushConfig = {
-                pushServerURL: 'http://10.13.3.240:8080/ag-push/',
-                alias: username,
+                // the location of the UnifiedPush server e.g. http(s)//host:port/context
+                pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+                // Application specific alias to identify users with the system. Common use case would be an email address or a username.
+                alias: "<alias e.g. a username or an email address optional>",
                 android: {
-                  senderID: '1098358002481',
-                  variantID: 'a860872b-3164-4564-ac0a-9c475aa019e8',
-                  variantSecret: '4ffc21b9-d997-415d-bcfa-0f053418a4ce'
-              },
-              ios: {
-                  variantID: '<variantID e.g. 1234456-234320>',
-                  variantSecret: '<variantSecret e.g. 1234456-234320>'
-              }
-          };
+                    // android specific - the id representing the Google project ID
+                    senderID: "<senderID e.g Google Project ID only for android>",
+                    // the id representing the mobile application variant
+                    variantID: "<variantID e.g. 1234456-234320>",
+                    // the secret for the mobile application variant
+                    variantSecret: "<variantSecret e.g. 1234456-234320>"
+                },
+                ios: {
+                    variantID: '<variantID e.g. 1234456-234320>',
+                    variantSecret: '<variantSecret e.g. 1234456-234320>'
+                }
+            };
 
-          try {
-            push.register(
-                umobile.push.onNotification,
+            try {
 
+                push.register(
+                    // onNotification callback
+                    umobile.push.onNotification,
+                    // successCallback
+                    function(success) {
+                        umobile.app.stateModel.set({notification : 'enabled'});
+                        umobile.app.stateModel.save();
+                    },
+                    // errorCallback
+                    function(error) {
+                        console.log('error : ' + error);
+                    },
+                    // configuration
+                    pushConfig);
+            } catch (err) {
+                txt = 'There was an error on this page.\n\n';
+                txt += 'Error description: ' + err.message + '\n\n';
+                alert(txt);
+            }
+        } else {
+            alert('Vous devez vous connecter pour activer les notifications');
+        }
+    };
+
+    /**
+    Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    @method unregister
+    **/
+    umobile.push.unregister = function() {
+
+        try {
+            push.unregister(
                 function(success) {
-                    umobile.app.stateModel.set({notification : 'enabled'});
+                    console.log('success : ' + success);
+                    umobile.app.stateModel.set({notification : 'disabled'});
                     umobile.app.stateModel.save();
                 },
-
                 function(error) {
                     console.log('error : ' + error);
-                },
-
-                pushConfig);
+                }
+                );
         } catch (err) {
             txt = 'There was an error on this page.\n\n';
             txt += 'Error description: ' + err.message + '\n\n';
             alert(txt);
         }
-    } else {
-        alert('Vous devez vous connecter pour activer les notifications');
-    }
-};
+    };
 
-umobile.push.unregister = function() {
+    /**
+    Method registers the authentificated user at first start
+    @method onNotification
+    **/
+    umobile.push.onNotification = function(e) {
 
-    try {
-        push.unregister(
-            function(success) {
-                console.log('success : ' + success);
-                umobile.app.stateModel.set({notification : 'disabled'});
-                umobile.app.stateModel.save();
-            },
-            function(error) {
-                console.log('error : ' + error);
-            }
-            );
-    } catch (err) {
-        txt = 'There was an error on this page.\n\n';
-        txt += 'Error description: ' + err.message + '\n\n';
-        alert(txt);
-    }
-};
-
-umobile.push.onNotification = function(e) {
-
-    console.log(e);
-
+        console.log(e);
         // if this flag is set, this notification happened while we were in the foreground.
         // you might want to play a sound to get the user's attention, throw up a dialog, etc.
         if (e.foreground) {
@@ -103,6 +131,10 @@ umobile.push.onNotification = function(e) {
         // umobile.websocket.initScocketIo(notificationID);
     };
 
+    /**
+    Method store all received notifications.
+    @method storeNotification
+    **/
     umobile.push.storeNotification = function (message) {
         var date = new Date();
         
@@ -139,6 +171,10 @@ umobile.push.onNotification = function(e) {
         umobile.app.notificationCollection.save();
     };
 
+    /**
+    Method remove all notifications.
+    @method remove
+    **/
     umobile.push.remove = function () {
 
         // flush the notificationRegistry

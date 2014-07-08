@@ -14,11 +14,15 @@
 		//     head.appendChild(script);
 		// };
 
+		/**
+		Method opens a socketIo channel to send an acknowledgement of receipt.
+		@method initScocketIo
+		**/
+
 		umobile.websocket.initScocketIo = function (notificationID) {
 
 			// socket connexion
-			serverUri = 'http://10.13.3.240:8082';
-			var socket = io.connect(serverUri);
+			var socket = io.connect("http://url:port");
 
 			socket.on('message', function(message) {
                 alert('Le serveur a un message pour vous : ' + message);
@@ -43,6 +47,10 @@
 			
 		};
 
+		/**
+		Method loads scripts 
+		@method initConnection
+		**/
 		umobile.websocket.initConnection = function() {
 		// load socket.io after all cordova plugins are loaded
 		// umobile.websocket.loadScript('js/lib/socket.io/socket.io.js', umobile.websocket.initScocketIo);
